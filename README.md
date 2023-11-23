@@ -27,6 +27,14 @@ $ curl http://localhost:9090/health
 Then connect running backend to Label Studio using Machine Learning settings. 
 
 
+## To Run the containers in the background 
+
+launch with:
+
+```bash
+docker-compose up -d
+```
+
 ## Writing your own model
 1. Place your scripts for model training & inference inside root directory. Follow the [API guidelines](#api-guidelines) described bellow. You can put everything in a single file, or create 2 separate one say `my_training_module.py` and `my_inference_module.py`
 
