@@ -4,6 +4,7 @@ services:
   redis:
     image: redis:alpine
     container_name: redis
+    restart: unless-stopped
     hostname: redis
     volumes:
       - "./data/redis:/data"
@@ -11,6 +12,7 @@ services:
       - 6379
   server:
     container_name: label-studio-ml
+    restart: unless-stopped
     build: .
     env_file:
       - .env
