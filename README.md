@@ -1,5 +1,14 @@
 ## Before using this repository!
-The labels in `model.py` and the YOLOv8n model `best.pt` included in this repository are specific to my project, so please replace them with your own labels and  trained model unless you also want to detect and classify potatoes (:
+
+
+The Original author's `model.py` had labels defined in `model.py` and a trained YOLOv8n model `best.pt` that were specific to the authors project, this version is trying to use the default COCO labels in the yolov8s.pt
+
+For this version I have downloaded the 'yolov8s.pt' trained model from ultralytics
+I downloaded the model to the project folder using
+
+```bash
+wget https://github.com/ultralytics/assets/releases/download/v0.0.0/yolov8s.pt 
+```
 
 ## Quickstart
 Build and start Machine Learning backend on `http://localhost:9090`
