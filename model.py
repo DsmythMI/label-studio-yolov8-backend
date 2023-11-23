@@ -15,8 +15,7 @@ class YOLOv8Model(LabelStudioMLBase):
         from_name, schema = list(self.parsed_label_config.items())[0]
         self.from_name = from_name
         self.to_name = schema['to_name'][0]
-        self.labels = ['Edible', 'Inedible', 'Visual defects']
-        self.model = YOLO("best.pt")
+        self.model = YOLO("yolov8s.pt")
 
     def predict(self, tasks, **kwargs):
         """ This is where inference happens: model returns 
@@ -52,7 +51,7 @@ class YOLOv8Model(LabelStudioMLBase):
                         "y": xyxy[1] / original_height * 100,
                         "width": (xyxy[2] - xyxy[0]) / original_width * 100,
                         "height": (xyxy[3] - xyxy[1]) / original_height * 100,
-                        "rectanglelabels": [self.labels[int(prediction.cls.item())]]
+                        "rectanglelabels": [self.model.names[int(prediction.cls.item())]]
                     }
                 })
                 score += prediction.conf.item()
@@ -60,5 +59,5 @@ class YOLOv8Model(LabelStudioMLBase):
         return [{
             "result": predictions,
             "score": score / (i + 1),
-            "model_version": "v8n",  # all predictions will be differentiated by model version
+            "model_version": "v8s",  # all predictions will be differentiated by model version
         }]
